@@ -2537,6 +2537,11 @@ a:hover .overlay {
   .post-content h3:before {
     top: 9px;
   }
+
+  .post-content p,
+  .post-content center {
+    font-size: 1rem;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
