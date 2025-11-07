@@ -1,3 +1,4 @@
+import type { Plugin } from 'vite'
 import process from 'node:process'
 import mdx from '@astrojs/mdx'
 import node from '@astrojs/node'
@@ -28,6 +29,21 @@ const {
   REDIS_URL,
   NODE_ENV,
 } = loadEnv(process.env.NODE_ENV!, process.cwd(), '')
+
+// Plugin to exclude TTF files from being included in build assets
+function excludeNotoSansSC(): Plugin {
+  return {
+    name: 'exclude-noto-sans-sc',
+    generateBundle(_, bundle) {
+    // Remove TTF files from the bundle to prevent them from being included in build assets
+      for (const fileName in bundle) {
+        if (fileName.endsWith('.ttf') && fileName.includes('NotoSansSC')) {
+          delete bundle[fileName]
+        }
+      }
+    },
+  }
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -133,7 +149,10 @@ export default defineConfig({
         'sharp',
       ],
     },
-    plugins: [vitePluginBinary({ gzip: true })],
+    plugins: [
+      vitePluginBinary({ gzip: true }),
+      excludeNotoSansSC(),
+    ],
     assetsInclude: ['images/**/*'],
   },
   build: {

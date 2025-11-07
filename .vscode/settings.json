@@ -276,5 +276,6 @@
     "scss",
     "pcss",
     "postcss"
-  ]
+  ],
+  "typescript.experimental.useTsgo": true
 }
