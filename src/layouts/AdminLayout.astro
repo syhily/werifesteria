@@ -1,9 +1,9 @@
 ---
-import { css as OPPOSans } from '@/assets/fonts/opposans.ttf'
 import config from '@/blog.config'
 import PageMeta from '@/components/meta/PageMeta.astro'
 import Footer from '@/components/partial/Footer.astro'
 import '@/assets/styles/globals.css'
+import '@/assets/fonts/opposans.css'
 import '@/assets/styles/admin/single.css'
 
 interface Props {
@@ -39,7 +39,7 @@ const description = Astro.props.description || config.description
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
   </head>
-  <body class="admin single" style={{ fontFamily: `'${OPPOSans.family}'` }}>
+  <body class="admin single">
     <div class="site-layout">
       <div class="desktop-brand">
         <img src="/logo.svg" alt="且听书吟" />
