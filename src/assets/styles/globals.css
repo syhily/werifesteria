@@ -2406,7 +2406,7 @@ a:hover .overlay {
   font-size: 1.05rem;
 }
 
-.post-content > p:not(:has(img)) {
+.post-content > p:not(:has(img)):not(:has(br)) {
   text-indent: 2em;
 }
 
