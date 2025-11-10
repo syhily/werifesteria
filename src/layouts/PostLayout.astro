@@ -15,6 +15,7 @@ import { formatLocalDate } from '@/helpers/content/formatter'
 import { getPosts, getTag, tags } from '@/helpers/content/schema'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import '@/assets/styles/copy-code.css'
+import 'kanji-typesetting/style.css'
 
 interface Props {
   post: Post
@@ -78,6 +79,7 @@ const { Content, headings } = await post.render()
 </BaseLayout>
 
 <script>
+import Han from 'kanji-typesetting'
 import mediumZoom from 'medium-zoom'
 import { attachCopyButtons } from '@/assets/scripts/copy-code'
 
@@ -87,4 +89,8 @@ zoom.attach('.post-content img', '.post-content svg')
 
 // Code copy button
 attachCopyButtons()
+
+// Kanji Typesetting
+const han = new Han(document.querySelector('.post-content'), document.documentElement)
+han.render()
 </script>
