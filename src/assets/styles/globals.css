@@ -2542,6 +2542,10 @@ a:hover .overlay {
   .post-content center {
     font-size: 1rem;
   }
+
+  .post-content > p:not(:has(img)):not(:has(br)) {
+    text-indent: 0em;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
