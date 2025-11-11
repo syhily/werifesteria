@@ -15,6 +15,7 @@ import { defineConfig, envField } from 'astro/config'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeExternalLinks from 'rehype-external-links'
 import rehypeSlug from 'rehype-slug'
+import rehypeTitleFigure from 'rehype-title-figure'
 import remarkMath from 'remark-math'
 import { loadEnv } from 'vite'
 import vitePluginBinary from 'vite-plugin-binary'
@@ -94,6 +95,7 @@ export default defineConfig({
     mdx({
       remarkPlugins: [remarkMath],
       rehypePlugins: [
+        [rehypeTitleFigure],
         [rehypeExternalLinks, { rel: 'nofollow', target: '_blank' }],
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: 'append', properties: {} }],
