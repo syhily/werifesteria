@@ -2401,13 +2401,10 @@ a:hover .overlay {
 }
 
 .post-content p,
+.post-content img,
 .post-content center {
   margin: 0 0 1.25rem;
   font-size: 1.05rem;
-}
-
-.post-content > p:not(:has(img)):not(:has(br)) {
-  text-indent: 2em;
 }
 
 .post-content h1,
@@ -2543,7 +2540,7 @@ a:hover .overlay {
     font-size: 1rem;
   }
 
-  .post-content > p:not(:has(img)):not(:has(br)) {
+  .post-content > p {
     text-indent: 0em;
   }
 }
