@@ -2640,7 +2640,6 @@ a:hover .overlay {
 
 .post-content img {
   display: flex;
-  margin: auto;
   justify-content: center;
 }
 
