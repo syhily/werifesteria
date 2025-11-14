@@ -91,7 +91,7 @@ const config: BlogConfig = {
     comments: {
       size: 10,
       avatar: {
-        mirror: 'https://www.gravatar.com/avatar',
+        mirror: 'https://cn.cravatar.com/avatar',
         size: 120,
       },
     },
