@@ -14,9 +14,9 @@ async function avatarImage(hash: string): Promise<Buffer | null> {
   const defaultAvatarLink = defaultAvatar()
   const link = joinPaths(
     config.settings.comments.avatar.mirror,
-    `${hash}?s=${config.settings.comments.avatar.size}&d=${defaultAvatarLink}`,
+    `${hash}?s=${config.settings.comments.avatar.size}&d=${encodeURIComponent(defaultAvatarLink)}`,
   )
-  const resp = await fetch(link, { redirect: 'manual', headers: { Referer: import.meta.env.SITE } })
+  const resp = await fetch(link, { redirect: 'manual', headers: { Referer: import.meta.env.SITE, Accept: 'image/png' } })
   if (resp.status > 299 || resp.headers.get('location') === defaultAvatarLink) {
     return null
   }
