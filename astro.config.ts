@@ -156,6 +156,9 @@ export default defineConfig({
       excludeNotoSansSC(),
     ],
     assetsInclude: ['images/**/*'],
+    build: {
+      emptyOutDir: true,
+    },
   },
   build: {
     assets: 'assets',
