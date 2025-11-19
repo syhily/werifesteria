@@ -10,7 +10,6 @@ import {
   transformerNotationHighlight,
   transformerNotationWordHighlight,
 } from '@shikijs/transformers'
-import uploader from 'astro-uploader'
 import { defineConfig, envField } from 'astro/config'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeExternalLinks from 'rehype-external-links'
@@ -19,14 +18,8 @@ import rehypeTitleFigure from 'rehype-title-figure'
 import remarkMath from 'remark-math'
 import { loadEnv } from 'vite'
 import vitePluginBinary from 'vite-plugin-binary'
-import config from './src/blog.config.js'
 
 const {
-  UPLOAD_STATIC_FILES,
-  S3_ENDPOINT,
-  S3_BUCKET,
-  S3_ACCESS_KEY,
-  S3_SECRET_ACCESS_KEY,
   REDIS_URL,
   NODE_ENV,
 } = loadEnv(process.env.NODE_ENV!, process.cwd(), '')
@@ -59,8 +52,8 @@ export default defineConfig({
   },
   trailingSlash: 'never',
   image: {
-    domains: [config.settings.asset.host, 'localhost', '127.0.0.1'],
-    service: { entrypoint: './src/helpers/content/image/qiniu' },
+    domains: ['asset.yufan.me', 'localhost', '127.0.0.1'],
+    service: { entrypoint: './src/helpers/content/image/assetry' },
     layout: 'constrained',
     responsiveStyles: true,
   },
@@ -101,14 +94,6 @@ export default defineConfig({
         [rehypeAutolinkHeadings, { behavior: 'append', properties: {} }],
         rehypeMathML,
       ],
-    }),
-    uploader({
-      enable: UPLOAD_STATIC_FILES === 'true',
-      paths: ['assets'],
-      endpoint: S3_ENDPOINT,
-      bucket: S3_BUCKET,
-      accessKey: S3_ACCESS_KEY,
-      secretAccessKey: S3_SECRET_ACCESS_KEY,
     }),
   ],
   adapter: node({
@@ -162,6 +147,5 @@ export default defineConfig({
   },
   build: {
     assets: 'assets',
-    assetsPrefix: `${config.settings.asset.scheme}://${config.settings.asset.host}`,
   },
 })

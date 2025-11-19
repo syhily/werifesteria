@@ -73,7 +73,7 @@ const service: ExternalImageService = {
     if (!isRemoteAllowed(imageSource, imageConfig)) {
       return imageSource
     }
-    return `${imageSource}?imageView2/1/w/${options.width}/h/${options.height}/format/avif/q/${typeof options.quality === 'number' ? options.quality : 100}/ignore-error/1`
+    return `${imageSource}?resize/w=${options.width},h=${options.height},m=crop/format/t=webp,q=${typeof options.quality === 'number' ? options.quality : 100}`
   },
 }
 
