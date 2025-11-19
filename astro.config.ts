@@ -52,10 +52,8 @@ export default defineConfig({
   },
   trailingSlash: 'never',
   image: {
-    domains: ['asset.yufan.me', 'localhost', '127.0.0.1'],
+    domains: ['asset.yufan.me'],
     service: { entrypoint: './src/helpers/content/image/assetry' },
-    layout: 'constrained',
-    responsiveStyles: true,
   },
   session: {
     driver: 'redis',
