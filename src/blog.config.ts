@@ -56,6 +56,10 @@ const config: BlogConfig = {
     },
   ],
   settings: {
+    asset: {
+      host: 'asset.yufan.me',
+      scheme: 'https',
+    },
     footer: {
       initialYear: 2011,
       icpNo: '皖ICP备2021002315号-2',
@@ -110,6 +114,10 @@ export interface BlogConfig {
   navigation: { text: string, link: string, target?: string }[]
   socials: { name: string, icon: string, type: 'link' | 'qrcode', title?: string, link: string }[]
   settings: {
+    asset: {
+      host: string
+      scheme: 'http' | 'https'
+    }
     footer: {
       initialYear: number
       icpNo?: string

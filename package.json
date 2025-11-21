@@ -48,7 +48,7 @@
     "ioredis": "^5.8.2",
     "lodash": "^4.17.21",
     "luxon": "^3.7.2",
-    "marked": "^17.0.0",
+    "marked": "^17.0.1",
     "marked-shiki": "^1.2.1",
     "nodemailer": "^7.0.10",
     "pg": "^8.16.3",
@@ -57,7 +57,7 @@
     "shiki": "^3.15.0",
     "thumbhash": "^0.1.1",
     "ultrahtml": "^1.6.0",
-    "unstorage": "^1.17.2"
+    "unstorage": "^1.17.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",

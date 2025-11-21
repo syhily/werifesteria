@@ -18,10 +18,13 @@ import rehypeTitleFigure from 'rehype-title-figure'
 import remarkMath from 'remark-math'
 import { loadEnv } from 'vite'
 import vitePluginBinary from 'vite-plugin-binary'
+import config from './src/blog.config'
+import uploader from './src/helpers/assetry'
 
 const {
   REDIS_URL,
   NODE_ENV,
+  ASSETRY_API_KEY,
 } = loadEnv(process.env.NODE_ENV!, process.cwd(), '')
 
 // Plugin to exclude TTF files from being included in build assets
@@ -52,7 +55,7 @@ export default defineConfig({
   },
   trailingSlash: 'never',
   image: {
-    domains: ['asset.yufan.me'],
+    domains: [config.settings.asset.host],
     service: { entrypoint: './src/helpers/content/image/assetry' },
   },
   session: {
@@ -79,6 +82,7 @@ export default defineConfig({
       // Database
       DATABASE_URL: envField.string({ context: 'server', access: 'secret', url: true }),
       REDIS_URL: envField.string({ context: 'server', access: 'secret', url: true }),
+      ASSETRY_API_KEY: envField.string({ context: 'server', access: 'secret' }),
     },
     validateSecrets: true,
   },
@@ -92,6 +96,11 @@ export default defineConfig({
         [rehypeAutolinkHeadings, { behavior: 'append', properties: {} }],
         rehypeMathML,
       ],
+    }),
+    uploader({
+      apiKey: ASSETRY_API_KEY,
+      paths: ['assets'],
+      endpoint: `${config.settings.asset.scheme}://${config.settings.asset.host}`,
     }),
   ],
   adapter: node({

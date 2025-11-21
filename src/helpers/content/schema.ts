@@ -198,7 +198,7 @@ export function getTag(name?: string, slug?: string): Tag | undefined {
 }
 
 // Query the image metadata from the image collection.
-const imageUrlPrefix = `https://asset.yufan.me`
+const imageUrlPrefix = `${config.settings.asset.scheme}://${config.settings.asset.host}`
 export function getImageMetadata(source: string): Image | undefined {
   const requestPath = source.startsWith(imageUrlPrefix) ? source.substring(imageUrlPrefix.length) : source
   return imageCollection.find(img => img.id === requestPath)?.data
