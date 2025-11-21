@@ -154,5 +154,6 @@ export default defineConfig({
   },
   build: {
     assets: 'assets',
+    assetsPrefix: `${config.settings.asset.scheme}://${config.settings.asset.host}`,
   },
 })
